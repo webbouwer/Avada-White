@@ -10,7 +10,12 @@
 
 
 // more info! // : https://developer.wordpress.org/themes/advanced-topics/child-themes/
-require_once( get_stylesheet_directory(). '/includes/menu/menu.php' ); // menu image plugin functions <?php
+require_once( get_stylesheet_directory(). '/includes/menu/menu.php' );
+require_once( get_stylesheet_directory(). '/includes/travel-posttype.php');
+require_once( get_stylesheet_directory(). '/includes/travel-search-widget.php');
+
+
+// menu image plugin functions <?php
 //require_once( get_stylesheet_directory(). '/customizer.php' ); // customizer functions
 
 /* Future jquery
@@ -68,9 +73,17 @@ function aw_basic_theme_info()
             <img width="400" height="auto" src="<?php echo get_stylesheet_directory_uri('stylesheet_directory')."/images/screenshot_avada_white.png"; ?>" />
             </p>
             <h3>Avada White and AvadaPack</h3>
-
+            <p>Travel theme branch in development</p>
             <p>Menu_Image original source <a target="blank" href="https://github.com/zviryatko/menu-image/blob/master/menu-image.php">github.com/zviryatko</a></p>
 		</div>
 	<?php
+}
+
+
+/* travel thumbs */
+function get_travel_thumbnailurl($pid){
+    $image_id = get_post_thumbnail_id($pid);
+    $image_url = wp_get_attachment_image_src($image_id,'Screenshot');
+    return  $image_url[0];
 }
 
